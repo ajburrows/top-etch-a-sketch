@@ -1,0 +1,8 @@
+.gridContainer {
+    border: solid black 1px;
+    width: 640px;
+    height: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+}
