@@ -21,6 +21,7 @@ body{
     border: solid black 1px;
 
     margin: 100px;
+    margin-bottom: 20px;
     padding: 20px;
 }
 
@@ -31,4 +32,15 @@ body{
     margin: 5px;
 
     border: solid black 1px;
+}
+
+.toolContainer{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.resizeContainer{
+    display: flex;
+    justify-content: center;
 }
