@@ -1,6 +1,10 @@
-let gridContainer = document.querySelector(".gridContainer");
 let paintingStatus = false;
+let paintingColor = "red";
+
+let gridContainer = document.querySelector(".gridContainer");
 let body = document.querySelector("body");
+
+// Click in the body to toggle painting
 body.onmousedown = function(){
     //paintingStatus = !paintingStatus;
     if (paintingStatus == false){
@@ -9,6 +13,31 @@ body.onmousedown = function(){
     else{
         paintingStatus = false;
     }
+}
+
+// Get color picker boxes
+let redPicker = document.querySelector(".colorPicker.red");
+let bluePicker = document.querySelector(".colorPicker.blue");
+let greenPicker = document.querySelector(".colorPicker.green");
+let whitePicker = document.querySelector(".colorPicker.white");
+redPicker.style.backgroundColor = "red";
+bluePicker.style.backgroundColor = "blue";
+greenPicker.style.backgroundColor = "green";
+whitePicker.style.backgroundColor = "white";
+
+
+// Switch painting color when clicking
+redPicker.onclick = function(){
+    paintingColor = "red";
+}
+bluePicker.onclick = function(){
+    paintingColor = "blue";
+}
+greenPicker.onclick = function(){
+    paintingColor = "green";
+}
+whitePicker.onclick = function(){
+    paintingColor = "white";
 }
 
 
@@ -26,7 +55,7 @@ for (let i = 0; i < 256; i++){
 
     gridSquare.onmouseenter = function(){
         if (paintingStatus == true){
-            this.style.backgroundColor = "black";
+            this.style.backgroundColor = paintingColor;
         }
     }
 }
