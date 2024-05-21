@@ -42,21 +42,36 @@ whitePicker.onclick = function(){
 
 
 // Populate gridContainer with the gridSquares
-
-for (let i = 0; i < 256; i++){
-    const gridSquare = document.createElement("div");
-    gridSquare.style.backgroundColor = "white";
-    gridSquare.style.padding = "0px";
-    gridSquare.style.margin = "0px";
-
-    gridSquare.style.height = "40px";
-    gridSquare.style.width = "40px";
-    gridContainer.appendChild(gridSquare);
-
-    gridSquare.onmouseenter = function(){
-        if (paintingStatus == true){
-            this.style.backgroundColor = paintingColor;
+function createGrid(size){
+    // TODO: delete all children in gridContainer before adding the new squares
+    // TODO: calculate what size the gridSquares need to be to fill up the container
+    for (let i = 0; i < size * size; i++){
+        const gridSquare = document.createElement("div");
+        gridSquare.style.backgroundColor = "white";
+        gridSquare.style.padding = "0px";
+        gridSquare.style.margin = "0px";
+    
+        gridSquare.style.height = "40px";
+        gridSquare.style.width = "40px";
+        gridContainer.appendChild(gridSquare);
+    
+        gridSquare.onmouseenter = function(){
+            if (paintingStatus == true){
+                this.style.backgroundColor = paintingColor;
+            }
         }
     }
 }
 
+
+
+
+// Get input from the resize text field
+let resizeTextInput = document.querySelector(".resizeTextInput");
+let resizeButton = document.querySelector(".resizeButton");
+resizeButton.onclick = function() {
+    let newSize = resizeTextInput.value;
+    createGrid(newSize);
+}
+
+createGrid(16);
