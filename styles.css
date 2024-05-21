@@ -1,3 +1,9 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .gridContainer {
     border: solid black 1px;
     width: 640px;
@@ -5,4 +11,24 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0px;
+}
+
+.colorPanelBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border: solid black 1px;
+
+    margin: 100px;
+    padding: 20px;
+}
+
+.colorPicker{
+    width: 40px;
+    height: 40px;
+
+    margin: 5px;
+
+    border: solid black 1px;
 }
