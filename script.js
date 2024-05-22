@@ -1,5 +1,6 @@
 let paintingStatus = false;
 let paintingColor = "red";
+let currentGridSize = 0;
 
 let gridContainer = document.querySelector(".gridContainer");
 let body = document.querySelector("body");
@@ -44,9 +45,15 @@ whitePicker.onclick = function(){
 // Populate gridContainer with the gridSquares
 function createGrid(size){
     // TODO: delete all children in gridContainer before adding the new squares
+    for (let i = 0; i < currentGridSize; i++){
+        const removeElement = el => el.parentNode.removeChild(el);
+        removeElement(document.querySelector('.gridSquare'));
+    }
+
     // TODO: calculate what size the gridSquares need to be to fill up the container
     for (let i = 0; i < size * size; i++){
         const gridSquare = document.createElement("div");
+        gridSquare.className = "gridSquare";
         gridSquare.style.backgroundColor = "white";
         gridSquare.style.padding = "0px";
         gridSquare.style.margin = "0px";
@@ -61,6 +68,7 @@ function createGrid(size){
             }
         }
     }
+    currentGridSize = size * size;
 }
 
 
