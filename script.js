@@ -1,9 +1,12 @@
 let paintingStatus = false;
 let paintingColor = "red";
-let currentGridSize = 0;
+
+let body = document.querySelector("body");
 
 let gridContainer = document.querySelector(".gridContainer");
-let body = document.querySelector("body");
+let currentGridSize = 0;
+let gridContainerWidth = gridContainer.offsetWidth - 2;
+console.log(gridContainerWidth);
 
 // Click in the body to toggle painting
 body.onmousedown = function(){
@@ -57,9 +60,10 @@ function createGrid(size){
         gridSquare.style.backgroundColor = "white";
         gridSquare.style.padding = "0px";
         gridSquare.style.margin = "0px";
-    
-        gridSquare.style.height = "40px";
-        gridSquare.style.width = "40px";
+        
+        console.log(gridContainerWidth / size);
+        gridSquare.style.height = "" + gridContainerWidth / size + "px";
+        gridSquare.style.width = "" + gridContainerWidth / size + "px";
         gridContainer.appendChild(gridSquare);
     
         gridSquare.onmouseenter = function(){
