@@ -8,14 +8,18 @@ let currentGridSize = 0;
 let gridContainerWidth = gridContainer.offsetWidth - 2;
 console.log(gridContainerWidth);
 
+let paintingStatusState = document.querySelector(".paintingStatusState");
+
 // Click in the body to toggle painting
 body.onmousedown = function(){
     //paintingStatus = !paintingStatus;
     if (paintingStatus == false){
         paintingStatus = true;
+        paintingStatusState.textContent = "On";
     }
     else{
         paintingStatus = false;
+        paintingStatusState.textContent = "Off";
     }
 }
 
