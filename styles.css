@@ -11,16 +11,16 @@ body{
     display: flex;
     flex-wrap: wrap;
     padding: 0px;
+    margin-left: 100px;
 }
 
 .colorPanelBox{
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    flex-wrap: wrap;
 
     border: solid black 1px;
 
-    margin: 100px;
     margin-bottom: 20px;
     padding: 20px;
 }
@@ -43,4 +43,36 @@ body{
 .resizeContainer{
     display: flex;
     justify-content: center;
+}
+
+.resizeButton{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.paintingStatusBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.paintingStatusText, .paintingStatusState{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.paintingStatusText{
+    margin-right: 10px;
+}
+
+.paintingStatusState{
+    margin: 5px;
+    margin-top: 7px;
+    margin-bottom: 3px;
+}
+
+.paintingStatusStateBox{
+    border: solid black 1px;
+    width: fit-content;
+    height: fit-content;
 }

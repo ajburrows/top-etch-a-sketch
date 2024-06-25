@@ -78,6 +78,7 @@ function createGrid(size){
 
 
 
+
 // Get input from the resize text field
 let resizeTextInput = document.querySelector(".resizeTextInput");
 let resizeButton = document.querySelector(".resizeButton");
