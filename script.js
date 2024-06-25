@@ -1,5 +1,6 @@
 let paintingStatus = false;
 let paintingColor = "red";
+let mouseInToolContainer = false;
 
 let body = document.querySelector("body");
 
@@ -8,22 +9,16 @@ let currentGridSize = 0;
 let gridContainerWidth = gridContainer.offsetWidth - 2;
 console.log(gridContainerWidth);
 
-let paintingStatusState = document.querySelector(".paintingStatusState");
-
 // Click in the body to toggle painting
 body.onmousedown = function(){
-    //paintingStatus = !paintingStatus;
-    if (paintingStatus == false){
-        paintingStatus = true;
-        paintingStatusState.textContent = "On";
-    }
-    else{
-        paintingStatus = false;
-        paintingStatusState.textContent = "Off";
+    if (mouseInToolContainer == false){
+        paintingStatus = !paintingStatus;
+        updatePaintingState();
     }
 }
 
 // Get color picker boxes
+let toolContainer = document.querySelector(".toolContainer");
 let redPicker = document.querySelector(".colorPicker.red");
 let bluePicker = document.querySelector(".colorPicker.blue");
 let greenPicker = document.querySelector(".colorPicker.green");
@@ -33,9 +28,23 @@ bluePicker.style.backgroundColor = "blue";
 greenPicker.style.backgroundColor = "green";
 whitePicker.style.backgroundColor = "white";
 
+// Keep track when the mouse is in the tool container so if the user clicks while in it (for example changing
+// their color) do not change the painting status
+toolContainer.onmouseenter = function(){
+    mouseInToolContainer = true;
+    console.log("enter");
+};
+toolContainer.onmouseleave = function(){
+    mouseInToolContainer = false;
+    console.log("exit");
+};
+
+
+
 
 // Switch painting color when clicking
 redPicker.onclick = function(){
+    console.log("b");
     paintingColor = "red";
 }
 bluePicker.onclick = function(){
@@ -48,6 +57,15 @@ whitePicker.onclick = function(){
     paintingColor = "white";
 }
 
+function updatePaintingState(){
+    let paintingStatusState = document.querySelector(".paintingStatusState");
+    if (paintingStatus == true){
+        paintingStatusState.textContent = "On";
+    }
+    else{
+        paintingStatusState.textContent = "Off";
+    }
+}
 
 // Populate gridContainer with the gridSquares
 function createGrid(size){
@@ -72,6 +90,11 @@ function createGrid(size){
     
         gridSquare.onmouseenter = function(){
             if (paintingStatus == true){
+                this.style.backgroundColor = paintingColor;
+            }
+        }
+        gridSquare.onmousedown = function(){
+            if (paintingStatus == false){
                 this.style.backgroundColor = paintingColor;
             }
         }
